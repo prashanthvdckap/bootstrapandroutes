@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import NavBar from '../Common/NavBar';
 
 function AddUser() {
+        const url = process.env.REACT_APP_BACKEND_URL;
+
           const [form, setForm] = useState({
               email: "",
               password: "",
@@ -20,7 +22,7 @@ function AddUser() {
                   return false;
               } else {
                   setMessage("");
-                  axios.post("https://crudcrud.com/api/48e1532f68914e6c91e2395c6aedc828/user", form).then((res) => {
+                  axios.post(url+"user", form).then((res) => {
                         navigate("/user");
                   });
               }

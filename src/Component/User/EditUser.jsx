@@ -5,6 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import NavBar from "../Common/NavBar";
 
 function EditUser() {
+    const url = process.env.REACT_APP_BACKEND_URL;
+
     const params = useParams();
     const id = params.id;
     const [form, setForm] = useState({
@@ -18,7 +20,7 @@ function EditUser() {
     const navigate = useNavigate();
     const [message, setMessage] = useState("");
     useEffect(()=> {
-        axios.get("https://crudcrud.com/api/48e1532f68914e6c91e2395c6aedc828/user/" + id).then((res) => {
+        axios.get(url+"user/" + id).then((res) => {
             setForm(() => {
                 return {
                     email: res.data.email,
@@ -36,7 +38,7 @@ function EditUser() {
             return false;
         } else {
             setMessage("");
-            axios.put("https://crudcrud.com/api/48e1532f68914e6c91e2395c6aedc828/user/" + id, form).then((res) => {
+            axios.put(url+"user/" + id, form).then((res) => {
                 navigate("/user");
             }).catch((err) => {
                 console.log(err)

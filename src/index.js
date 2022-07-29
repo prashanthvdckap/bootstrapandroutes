@@ -1,28 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import AddUser from './Component/User/AddUser';
-import ViewUser from './Component/User/ViewUser';
+import { BrowserRouter } from 'react-router-dom';
 import 'font-awesome/css/font-awesome.min.css';
-import EditUser from './Component/User/EditUser';
+import MyRoutes from './MyRoutes';
+import { UserProvider } from './Context/UserContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <BrowserRouter>
-            <Routes>
-                <Route index path="/" element={<ViewUser />} />
-                <Route path="/user" element={<ViewUser />} />
-                <Route path="/user/add" element={<AddUser />} />
-                <Route path="user/edit/:id" element={<EditUser />} />
-                <Route path="*" element={<div>404</div>} />
-                {/* <Route path="user/add" element={} */}
-            </Routes>
-        </BrowserRouter>
+            <BrowserRouter>
+                <MyRoutes />
+            </BrowserRouter>
     </React.StrictMode>
 );
 
